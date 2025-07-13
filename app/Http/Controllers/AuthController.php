@@ -26,7 +26,7 @@ class AuthController extends Controller
      * @bodyParam password string required The password of the user (minimum 8 characters). Example: password123
      *
      * @response 200 scenario="Successful login" {
-     *   "success": "success",
+     *   "status": "success",
      *   "message": "Login successful.",
      *   "data": {
      *     "token": "1|abcdefg123456789",

@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "special_octo_engine API Documentation",
-        "_postman_id": "72580560-8547-48c9-903c-7c8206b90f71",
+        "_postman_id": "c0a10a2e-2853-48c2-b620-88c1bb6e1cac",
         "description": "Documentation for BE Test 1 API",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -52,7 +52,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n  \"success\": \"success\",\n  \"message\": \"Login successful.\",\n  \"data\": {\n    \"token\": \"1|abcdefg123456789\",\n    \"admin\": {\n      \"id\": \"uuid-here\",\n      \"name\": \"Administrator\",\n      \"username\": \"admin\",\n      \"phone\": \"081234567890\",\n      \"email\": \"admin@example.com\"\n    }\n  }\n}",
+                            "body": "{\n  \"status\": \"success\",\n  \"message\": \"Login successful.\",\n  \"data\": {\n    \"token\": \"1|abcdefg123456789\",\n    \"admin\": {\n      \"id\": \"uuid-here\",\n      \"name\": \"Administrator\",\n      \"username\": \"admin\",\n      \"phone\": \"081234567890\",\n      \"email\": \"admin@example.com\"\n    }\n  }\n}",
                             "name": "Successful login"
                         },
                         {
@@ -144,7 +144,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n  \"success\": \"success\",\n  \"message\": \"Divisions fetched successfully.\",\n  \"data\": [\n     \"divisions\": [\n    {\n      \"id\": \"uuid-here\",\n      \"name\": \"Information Technology\"\n    },\n    {\n      \"id\": \"uuid-here-2\",\n      \"name\": \"Human Resources\"\n    }\n     ]\n  ],\n  \"pagination\": {\n    \"current_page\": 1,\n    \"per_page\": 5,\n    \"total\": 10\n  }\n}",
+                            "body": "{\n  \"status\": \"success\",\n  \"message\": \"Divisions fetched successfully.\",\n  \"data\": [\n     \"divisions\": [\n    {\n      \"id\": \"uuid-here\",\n      \"name\": \"Information Technology\"\n    },\n    {\n      \"id\": \"uuid-here-2\",\n      \"name\": \"Human Resources\"\n    }\n     ]\n  ],\n  \"pagination\": {\n    \"current_page\": 1,\n    \"per_page\": 5,\n    \"total\": 10\n  }\n}",
                             "name": "Successful retrieval"
                         }
                     ]
@@ -198,7 +198,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n  \"success\": \"success\",\n  \"message\": \"Employee fetched successfully.\",\n  \"data\": {\n    \"employees\": [\n      {\n        \"id\": \"uuid-employee-id\",\n        \"image\": \"https:\/\/example.com\/image.jpg\",\n        \"name\": \"John Doe\",\n        \"phone\": \"081234567890\",\n        \"division\": {\n          \"id\": \"uuid-division-id\",\n          \"name\": \"Information Technology\"\n        },\n        \"position\": \"Software Developer\"\n      }\n    ]\n  },\n  \"pagination\": {\n    \"current_page\": 1,\n    \"per_page\": 5,\n    \"total\": 25\n  }\n}",
+                            "body": "{\n  \"status\": \"success\",\n  \"message\": \"Employee fetched successfully.\",\n  \"data\": {\n    \"employees\": [\n      {\n        \"id\": \"uuid-employee-id\",\n        \"image\": \"https:\/\/example.com\/image.jpg\",\n        \"name\": \"John Doe\",\n        \"phone\": \"081234567890\",\n        \"division\": {\n          \"id\": \"uuid-division-id\",\n          \"name\": \"Information Technology\"\n        },\n        \"position\": \"Software Developer\"\n      }\n    ]\n  },\n  \"pagination\": {\n    \"current_page\": 1,\n    \"per_page\": 5,\n    \"total\": 25\n  }\n}",
                             "name": "Successful retrieval"
                         },
                         {
@@ -239,7 +239,7 @@
                         {
                             "header": [],
                             "code": 201,
-                            "body": "{\n  \"success\": \"success\",\n  \"message\": \"Employee created successfully.\"\n}",
+                            "body": "{\n  \"status\": \"success\",\n  \"message\": \"Employee created successfully.\"\n}",
                             "name": "Employee created successfully"
                         },
                         {
@@ -294,13 +294,13 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n  \"success\": \"success\",\n  \"message\": \"Employee updated successfully.\"\n}",
+                            "body": "{\n  \"status\":: \"success\",\n  \"message\": \"Employee updated successfully.\"\n}",
                             "name": "Employee updated successfully"
                         },
                         {
                             "header": [],
                             "code": 404,
-                            "body": "{\n  \"success\": \"error\",\n  \"message\": \"Employee not found.\"\n}",
+                            "body": "{\n  \"status\":: \"error\",\n  \"message\": \"Employee not found.\"\n}",
                             "name": "Employee not found"
                         },
                         {
@@ -352,13 +352,13 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n  \"success\": \"success\",\n  \"message\": \"Employee deleted successfully.\"\n}",
+                            "body": "{\n  \"status\": \"success\",\n  \"message\": \"Employee deleted successfully.\"\n}",
                             "name": "Employee deleted successfully"
                         },
                         {
                             "header": [],
                             "code": 404,
-                            "body": "{\n  \"success\": \"error\",\n  \"message\": \"Employee not found.\"\n}",
+                            "body": "{\n  \"status\": \"error\",\n  \"message\": \"Employee not found.\"\n}",
                             "name": "Employee not found"
                         },
                         {

@@ -58,7 +58,7 @@ endpoints:
         status: 200
         content: |-
           {
-            "success": "success",
+            "status": "success",
             "message": "Divisions fetched successfully.",
             "data": [
                "divisions": [

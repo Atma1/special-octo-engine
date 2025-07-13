@@ -55,7 +55,7 @@ endpoints:
         status: 200
         content: |-
           {
-            "success": "success",
+            "status": "success",
             "message": "Login successful.",
             "data": {
               "token": "1|abcdefg123456789",

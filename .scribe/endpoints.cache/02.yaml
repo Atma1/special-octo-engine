@@ -80,7 +80,7 @@ endpoints:
         status: 200
         content: |-
           {
-            "success": "success",
+            "status": "success",
             "message": "Employee fetched successfully.",
             "data": {
               "employees": [
@@ -211,7 +211,7 @@ endpoints:
         status: 201
         content: |-
           {
-            "success": "success",
+            "status": "success",
             "message": "Employee created successfully."
           }
         headers: []
@@ -345,7 +345,7 @@ endpoints:
         status: 200
         content: |-
           {
-            "success": "success",
+            "status":: "success",
             "message": "Employee updated successfully."
           }
         headers: []
@@ -355,7 +355,7 @@ endpoints:
         status: 404
         content: |-
           {
-            "success": "error",
+            "status":: "error",
             "message": "Employee not found."
           }
         headers: []
@@ -433,7 +433,7 @@ endpoints:
         status: 200
         content: |-
           {
-            "success": "success",
+            "status": "success",
             "message": "Employee deleted successfully."
           }
         headers: []
@@ -443,7 +443,7 @@ endpoints:
         status: 404
         content: |-
           {
-            "success": "error",
+            "status": "error",
             "message": "Employee not found."
           }
         headers: []

@@ -40,7 +40,7 @@ paths:
               schema:
                 type: object
                 example:
-                  success: success
+                  status: success
                   message: 'Login successful.'
                   data:
                     token: 1|abcdefg123456789
@@ -51,7 +51,7 @@ paths:
                       phone: '081234567890'
                       email: admin@example.com
                 properties:
-                  success:
+                  status:
                     type: string
                     example: success
                   message:
@@ -185,7 +185,7 @@ paths:
             text/plain:
               schema:
                 type: string
-                example: "{\n  \"success\": \"success\",\n  \"message\": \"Divisions fetched successfully.\",\n  \"data\": [\n     \"divisions\": [\n    {\n      \"id\": \"uuid-here\",\n      \"name\": \"Information Technology\"\n    },\n    {\n      \"id\": \"uuid-here-2\",\n      \"name\": \"Human Resources\"\n    }\n     ]\n  ],\n  \"pagination\": {\n    \"current_page\": 1,\n    \"per_page\": 5,\n    \"total\": 10\n  }\n}"
+                example: "{\n  \"status\": \"success\",\n  \"message\": \"Divisions fetched successfully.\",\n  \"data\": [\n     \"divisions\": [\n    {\n      \"id\": \"uuid-here\",\n      \"name\": \"Information Technology\"\n    },\n    {\n      \"id\": \"uuid-here-2\",\n      \"name\": \"Human Resources\"\n    }\n     ]\n  ],\n  \"pagination\": {\n    \"current_page\": 1,\n    \"per_page\": 5,\n    \"total\": 10\n  }\n}"
       tags:
         - 'Division management'
       requestBody:
@@ -236,7 +236,7 @@ paths:
               schema:
                 type: object
                 example:
-                  success: success
+                  status: success
                   message: 'Employee fetched successfully.'
                   data:
                     employees:
@@ -254,7 +254,7 @@ paths:
                     per_page: 5
                     total: 25
                 properties:
-                  success:
+                  status:
                     type: string
                     example: success
                   message:
@@ -353,10 +353,10 @@ paths:
               schema:
                 type: object
                 example:
-                  success: success
+                  status: success
                   message: 'Employee created successfully.'
                 properties:
-                  success:
+                  status:
                     type: string
                     example: success
                   message:
@@ -419,35 +419,17 @@ paths:
         200:
           description: 'Employee updated successfully'
           content:
-            application/json:
+            text/plain:
               schema:
-                type: object
-                example:
-                  success: success
-                  message: 'Employee updated successfully.'
-                properties:
-                  success:
-                    type: string
-                    example: success
-                  message:
-                    type: string
-                    example: 'Employee updated successfully.'
+                type: string
+                example: "{\n  \"status\":: \"success\",\n  \"message\": \"Employee updated successfully.\"\n}"
         404:
           description: 'Employee not found'
           content:
-            application/json:
+            text/plain:
               schema:
-                type: object
-                example:
-                  success: error
-                  message: 'Employee not found.'
-                properties:
-                  success:
-                    type: string
-                    example: error
-                  message:
-                    type: string
-                    example: 'Employee not found.'
+                type: string
+                example: "{\n  \"status\":: \"error\",\n  \"message\": \"Employee not found.\"\n}"
         422:
           description: 'Invalid request body'
           content:
@@ -508,10 +490,10 @@ paths:
               schema:
                 type: object
                 example:
-                  success: success
+                  status: success
                   message: 'Employee deleted successfully.'
                 properties:
-                  success:
+                  status:
                     type: string
                     example: success
                   message:
@@ -524,10 +506,10 @@ paths:
               schema:
                 type: object
                 example:
-                  success: error
+                  status: error
                   message: 'Employee not found.'
                 properties:
-                  success:
+                  status:
                     type: string
                     example: error
                   message:

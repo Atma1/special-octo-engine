@@ -24,7 +24,7 @@ class DivisionController extends Controller
      * @queryParam name string Filter divisions by name (partial match). Example: IT
      *
      * @response 200 scenario="Successful retrieval" {
-     *   "success": "success",
+     *   "status": "success",
      *   "message": "Divisions fetched successfully.",
      *   "data": [
      *      "divisions": [

@@ -28,7 +28,7 @@ class EmployeeController extends Controller
      * @queryParam division_id string Filter employees by division ID. Example: uuid-division-id
      *
      * @response 200 scenario="Successful retrieval" {
-     *   "success": "success",
+     *   "status": "success",
      *   "message": "Employee fetched successfully.",
      *   "data": {
      *     "employees": [
@@ -88,7 +88,7 @@ class EmployeeController extends Controller
      * @bodyParam position string required Job position of the employee. Example: Software Developer
      *
      * @response 201 scenario="Employee created successfully" {
-     *   "success": "success",
+     *   "status": "success",
      *   "message": "Employee created successfully."
      * }
      * @response 422 scenario="Invalid request body" {
@@ -124,12 +124,12 @@ class EmployeeController extends Controller
      * @bodyParam position string required Job position of the employee. Example: Senior Developer
      *
      * @response 200 scenario="Employee updated successfully" {
-     *   "success": "success",
+     *   "status":: "success",
      *   "message": "Employee updated successfully."
      * }
      *
      * @response 404 scenario="Employee not found" {
-     *   "success": "error",
+     *   "status":: "error",
      *   "message": "Employee not found."
      * }
      * @response 422 scenario="Invalid request body" {
@@ -163,12 +163,12 @@ class EmployeeController extends Controller
      * @urlParam uuid string required The UUID of the employee to delete. Example: uuid-employee-id
      *
      * @response 200 scenario="Employee deleted successfully" {
-     *   "success": "success",
+     *   "status": "success",
      *   "message": "Employee deleted successfully."
      * }
      *
      * @response 404 scenario="Employee not found" {
-     *   "success": "error",
+     *   "status": "error",
      *   "message": "Employee not found."
      * }
      *
