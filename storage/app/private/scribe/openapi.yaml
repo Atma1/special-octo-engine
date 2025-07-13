@@ -1,0 +1,552 @@
+openapi: 3.0.3
+info:
+  title: 'Laravel API Documentation'
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost:8000'
+tags:
+  -
+    name: 'Auth management'
+    description: "\nAPIs for managing authentication"
+  -
+    name: 'Division management'
+    description: "\nAPIs for managing Division"
+  -
+    name: 'User management'
+    description: "\nAPIs for managing users"
+paths:
+  /api/login:
+    post:
+      summary: 'User Login'
+      operationId: userLogin
+      description: 'Authenticate user with username and password, returns access token on success.'
+      parameters: []
+      responses:
+        200:
+          description: 'Successful login'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: success
+                  message: 'Login successful.'
+                  data:
+                    token: 1|abcdefg123456789
+                    admin:
+                      id: uuid-here
+                      name: Administrator
+                      username: admin
+                      phone: '081234567890'
+                      email: admin@example.com
+                properties:
+                  success:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: 'Login successful.'
+                  data:
+                    type: object
+                    properties:
+                      token:
+                        type: string
+                        example: 1|abcdefg123456789
+                      admin:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: uuid-here
+                          name:
+                            type: string
+                            example: Administrator
+                          username:
+                            type: string
+                            example: admin
+                          phone:
+                            type: string
+                            example: '081234567890'
+                          email:
+                            type: string
+                            example: admin@example.com
+        401:
+          description: 'Wrong credentials'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: error
+                  message: 'Credidentals are wrong.'
+                properties:
+                  success:
+                    type: string
+                    example: error
+                  message:
+                    type: string
+                    example: 'Credidentals are wrong.'
+        409:
+          description: 'Already authenticated'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: error
+                  message: 'Already authenticated.'
+                properties:
+                  success:
+                    type: string
+                    example: error
+                  message:
+                    type: string
+                    example: 'Already authenticated.'
+      tags:
+        - 'Auth management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: 'The username of the user.'
+                  example: admin
+                  nullable: false
+                password:
+                  type: string
+                  description: 'The password of the user (minimum 8 characters).'
+                  example: password123
+                  nullable: false
+              required:
+                - username
+                - password
+      security: []
+  /api/logout:
+    post:
+      summary: 'User Logout'
+      operationId: userLogout
+      description: 'Logout the authenticated user by revoking all tokens.'
+      parameters: []
+      responses:
+        200:
+          description: 'Successful logout'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: success
+                  message: 'Logout successful.'
+                properties:
+                  success:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: 'Logout successful.'
+      tags:
+        - 'Auth management'
+  /api/divisions:
+    get:
+      summary: 'Get All Divisions'
+      operationId: getAllDivisions
+      description: 'Retrieve a paginated list of divisions with optional name filtering.'
+      parameters:
+        -
+          in: query
+          name: name
+          description: 'Filter divisions by name (partial match).'
+          example: IT
+          required: false
+          schema:
+            type: string
+            description: 'Filter divisions by name (partial match).'
+            example: IT
+            nullable: false
+      responses:
+        200:
+          description: 'Successful retrieval'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n  \"success\": \"success\",\n  \"message\": \"Divisions fetched successfully.\",\n  \"data\": [\n     \"divisions\": [\n    {\n      \"id\": \"uuid-here\",\n      \"name\": \"Information Technology\"\n    },\n    {\n      \"id\": \"uuid-here-2\",\n      \"name\": \"Human Resources\"\n    }\n     ]\n  ],\n  \"pagination\": {\n    \"current_page\": 1,\n    \"per_page\": 5,\n    \"total\": 10\n  }\n}"
+      tags:
+        - 'Division management'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: architecto
+                  nullable: true
+  /api/employee:
+    get:
+      summary: 'Get All Employees'
+      operationId: getAllEmployees
+      description: 'Retrieve a paginated list of employees with optional filtering by name and division.'
+      parameters:
+        -
+          in: query
+          name: name
+          description: 'Filter employees by name (partial match).'
+          example: John
+          required: false
+          schema:
+            type: string
+            description: 'Filter employees by name (partial match).'
+            example: John
+            nullable: false
+        -
+          in: query
+          name: division_id
+          description: 'Filter employees by division ID.'
+          example: uuid-division-id
+          required: false
+          schema:
+            type: string
+            description: 'Filter employees by division ID.'
+            example: uuid-division-id
+            nullable: false
+      responses:
+        200:
+          description: 'Successful retrieval'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: success
+                  message: 'Divisions fetched successfully.'
+                  data:
+                    employees:
+                      -
+                        id: uuid-employee-id
+                        image: 'https://example.com/image.jpg'
+                        name: 'John Doe'
+                        phone: '081234567890'
+                        division:
+                          id: uuid-division-id
+                          name: 'Information Technology'
+                        position: 'Software Developer'
+                  pagination:
+                    current_page: 1
+                    per_page: 5
+                    total: 25
+                properties:
+                  success:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: 'Divisions fetched successfully.'
+                  data:
+                    type: object
+                    properties:
+                      employees:
+                        type: array
+                        example:
+                          -
+                            id: uuid-employee-id
+                            image: 'https://example.com/image.jpg'
+                            name: 'John Doe'
+                            phone: '081234567890'
+                            division:
+                              id: uuid-division-id
+                              name: 'Information Technology'
+                            position: 'Software Developer'
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: uuid-employee-id
+                            image:
+                              type: string
+                              example: 'https://example.com/image.jpg'
+                            name:
+                              type: string
+                              example: 'John Doe'
+                            phone:
+                              type: string
+                              example: '081234567890'
+                            division:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                  example: uuid-division-id
+                                name:
+                                  type: string
+                                  example: 'Information Technology'
+                            position:
+                              type: string
+                              example: 'Software Developer'
+                  pagination:
+                    type: object
+                    properties:
+                      current_page:
+                        type: integer
+                        example: 1
+                      per_page:
+                        type: integer
+                        example: 5
+                      total:
+                        type: integer
+                        example: 25
+        422:
+          description: 'Invalid request body'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n  \"message\": \"The following field is required. (and n more errors)\"\n  \"error\":  errorArray\n}"
+      tags:
+        - 'User management'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: architecto
+                  nullable: true
+                division_id:
+                  type: string
+                  description: 'Must be a valid UUID.'
+                  example: a4855dc5-0acb-33c3-b921-f4291f719ca0
+                  nullable: true
+    post:
+      summary: 'Create New Employee'
+      operationId: createNewEmployee
+      description: 'Create a new employee record with the provided information.'
+      parameters: []
+      responses:
+        201:
+          description: 'Employee created successfully'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: success
+                  message: 'Employee created successfully.'
+                properties:
+                  success:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: 'Employee created successfully.'
+        422:
+          description: 'Invalid request body'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n  \"message\": \"The following field is required. (and 4 more errors)\"\n  \"error\":  errorArray\n}"
+      tags:
+        - 'User management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  description: "URL of the employee's profile image."
+                  example: 'https://example.com/image.jpg'
+                  nullable: false
+                name:
+                  type: string
+                  description: 'Full name of the employee.'
+                  example: 'John Doe'
+                  nullable: false
+                phone:
+                  type: string
+                  description: 'Phone number of the employee.'
+                  example: '081234567890'
+                  nullable: false
+                division:
+                  type: string
+                  description: 'UUID of the division.'
+                  example: uuid-division-id
+                  nullable: false
+                position:
+                  type: string
+                  description: 'Job position of the employee.'
+                  example: 'Software Developer'
+                  nullable: false
+              required:
+                - image
+                - name
+                - phone
+                - division
+                - position
+  '/api/employee/{id}':
+    put:
+      summary: 'Update Employee'
+      operationId: updateEmployee
+      description: "Update an existing employee's information by UUID."
+      parameters: []
+      responses:
+        200:
+          description: 'Employee updated successfully'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: success
+                  message: 'Employee updated successfully.'
+                properties:
+                  success:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: 'Employee updated successfully.'
+        404:
+          description: 'Employee not found'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: error
+                  message: 'Employee not found.'
+                properties:
+                  success:
+                    type: string
+                    example: error
+                  message:
+                    type: string
+                    example: 'Employee not found.'
+        422:
+          description: 'Invalid request body'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n  \"message\": \"The following field is required. (and 4 more errors)\"\n  \"error\":  errorArray\n}"
+      tags:
+        - 'User management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  description: "URL of the employee's profile image."
+                  example: 'https://example.com/updated-image.jpg'
+                  nullable: false
+                name:
+                  type: string
+                  description: 'Full name of the employee.'
+                  example: 'Jane Doe'
+                  nullable: false
+                phone:
+                  type: string
+                  description: 'Phone number of the employee.'
+                  example: '081234567891'
+                  nullable: false
+                division:
+                  type: string
+                  description: 'UUID of the division.'
+                  example: uuid-division-id
+                  nullable: false
+                position:
+                  type: string
+                  description: 'Job position of the employee.'
+                  example: 'Senior Developer'
+                  nullable: false
+              required:
+                - image
+                - name
+                - phone
+                - division
+                - position
+    delete:
+      summary: 'Delete Employee'
+      operationId: deleteEmployee
+      description: 'Delete an employee record by UUID.'
+      parameters: []
+      responses:
+        200:
+          description: 'Employee deleted successfully'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: success
+                  message: 'Employee deleted successfully.'
+                properties:
+                  success:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: 'Employee deleted successfully.'
+        404:
+          description: 'Employee not found'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: error
+                  message: 'Employee not found.'
+                properties:
+                  success:
+                    type: string
+                    example: error
+                  message:
+                    type: string
+                    example: 'Employee not found.'
+        422:
+          description: 'Invalid request body'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n  \"message\": \"The image field is required. (and 4 more errors)\"\n  \"error\":  errorArray\n}"
+      tags:
+        - 'User management'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the employee.'
+        example: architecto
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: uuid
+        description: 'The UUID of the employee to update.'
+        example: uuid-employee-id
+        required: true
+        schema:
+          type: string

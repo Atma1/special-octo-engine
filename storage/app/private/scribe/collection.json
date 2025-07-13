@@ -1,0 +1,378 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/localhost:8000"
+        }
+    ],
+    "info": {
+        "name": "Laravel API Documentation",
+        "_postman_id": "58fa6700-a499-466d-9e38-b990942ce057",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Auth management",
+            "description": "\nAPIs for managing authentication",
+            "item": [
+                {
+                    "name": "User Login",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/login",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"username\":\"admin\",\"password\":\"password123\"}"
+                        },
+                        "description": "Authenticate user with username and password, returns access token on success.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"success\": \"success\",\n  \"message\": \"Login successful.\",\n  \"data\": {\n    \"token\": \"1|abcdefg123456789\",\n    \"admin\": {\n      \"id\": \"uuid-here\",\n      \"name\": \"Administrator\",\n      \"username\": \"admin\",\n      \"phone\": \"081234567890\",\n      \"email\": \"admin@example.com\"\n    }\n  }\n}",
+                            "name": "Successful login"
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n  \"success\": \"error\",\n  \"message\": \"Credidentals are wrong.\"\n}",
+                            "name": "Wrong credentials"
+                        },
+                        {
+                            "header": [],
+                            "code": 409,
+                            "body": "{\n  \"success\": \"error\",\n  \"message\": \"Already authenticated.\"\n}",
+                            "name": "Already authenticated"
+                        }
+                    ]
+                },
+                {
+                    "name": "User Logout",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/logout",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/logout"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Logout the authenticated user by revoking all tokens."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"success\": \"success\",\n  \"message\": \"Logout successful.\"\n}",
+                            "name": "Successful logout"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Division management",
+            "description": "\nAPIs for managing Division",
+            "item": [
+                {
+                    "name": "Get All Divisions",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/divisions",
+                            "query": [
+                                {
+                                    "key": "name",
+                                    "value": "IT",
+                                    "description": "Filter divisions by name (partial match).",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/api\/divisions?name=IT"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"architecto\"}"
+                        },
+                        "description": "Retrieve a paginated list of divisions with optional name filtering."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"success\": \"success\",\n  \"message\": \"Divisions fetched successfully.\",\n  \"data\": [\n     \"divisions\": [\n    {\n      \"id\": \"uuid-here\",\n      \"name\": \"Information Technology\"\n    },\n    {\n      \"id\": \"uuid-here-2\",\n      \"name\": \"Human Resources\"\n    }\n     ]\n  ],\n  \"pagination\": {\n    \"current_page\": 1,\n    \"per_page\": 5,\n    \"total\": 10\n  }\n}",
+                            "name": "Successful retrieval"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "User management",
+            "description": "\nAPIs for managing users",
+            "item": [
+                {
+                    "name": "Get All Employees",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/employee",
+                            "query": [
+                                {
+                                    "key": "name",
+                                    "value": "John",
+                                    "description": "Filter employees by name (partial match).",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "division_id",
+                                    "value": "uuid-division-id",
+                                    "description": "Filter employees by division ID.",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/api\/employee?name=John&division_id=uuid-division-id"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"architecto\",\"division_id\":\"a4855dc5-0acb-33c3-b921-f4291f719ca0\"}"
+                        },
+                        "description": "Retrieve a paginated list of employees with optional filtering by name and division."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"success\": \"success\",\n  \"message\": \"Divisions fetched successfully.\",\n  \"data\": {\n    \"employees\": [\n      {\n        \"id\": \"uuid-employee-id\",\n        \"image\": \"https:\/\/example.com\/image.jpg\",\n        \"name\": \"John Doe\",\n        \"phone\": \"081234567890\",\n        \"division\": {\n          \"id\": \"uuid-division-id\",\n          \"name\": \"Information Technology\"\n        },\n        \"position\": \"Software Developer\"\n      }\n    ]\n  },\n  \"pagination\": {\n    \"current_page\": 1,\n    \"per_page\": 5,\n    \"total\": 25\n  }\n}",
+                            "name": "Successful retrieval"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n  \"message\": \"The following field is required. (and n more errors)\"\n  \"error\":  errorArray\n}",
+                            "name": "Invalid request body"
+                        }
+                    ]
+                },
+                {
+                    "name": "Create New Employee",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/employee",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/employee"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"image\":\"https:\\\/\\\/example.com\\\/image.jpg\",\"name\":\"John Doe\",\"phone\":\"081234567890\",\"division\":\"uuid-division-id\",\"position\":\"Software Developer\"}"
+                        },
+                        "description": "Create a new employee record with the provided information."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\n  \"success\": \"success\",\n  \"message\": \"Employee created successfully.\"\n}",
+                            "name": "Employee created successfully"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n  \"message\": \"The following field is required. (and 4 more errors)\"\n  \"error\":  errorArray\n}",
+                            "name": "Invalid request body"
+                        }
+                    ]
+                },
+                {
+                    "name": "Update Employee",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/employee\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/employee\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "architecto",
+                                    "description": "The ID of the employee."
+                                },
+                                {
+                                    "id": "uuid",
+                                    "key": "uuid",
+                                    "value": "uuid-employee-id",
+                                    "description": "The UUID of the employee to update."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"image\":\"https:\\\/\\\/example.com\\\/updated-image.jpg\",\"name\":\"Jane Doe\",\"phone\":\"081234567891\",\"division\":\"uuid-division-id\",\"position\":\"Senior Developer\"}"
+                        },
+                        "description": "Update an existing employee's information by UUID."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"success\": \"success\",\n  \"message\": \"Employee updated successfully.\"\n}",
+                            "name": "Employee updated successfully"
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n  \"success\": \"error\",\n  \"message\": \"Employee not found.\"\n}",
+                            "name": "Employee not found"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n  \"message\": \"The following field is required. (and 4 more errors)\"\n  \"error\":  errorArray\n}",
+                            "name": "Invalid request body"
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete Employee",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/employee\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/employee\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "architecto",
+                                    "description": "The ID of the employee."
+                                },
+                                {
+                                    "id": "uuid",
+                                    "key": "uuid",
+                                    "value": "uuid-employee-id",
+                                    "description": "The UUID of the employee to delete."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Delete an employee record by UUID."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"success\": \"success\",\n  \"message\": \"Employee deleted successfully.\"\n}",
+                            "name": "Employee deleted successfully"
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n  \"success\": \"error\",\n  \"message\": \"Employee not found.\"\n}",
+                            "name": "Employee not found"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n  \"message\": \"The image field is required. (and 4 more errors)\"\n  \"error\":  errorArray\n}",
+                            "name": "Invalid request body"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}
