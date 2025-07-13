@@ -20,10 +20,12 @@ class UpdateEmployeeRequest extends FormRequest
      */
     public function rules(): array
     {
+        $employeeId = $this->route('employee');
+
         return [
             'image'    => 'required|string',
             'name'     => 'required|string',
-            'phone'    => 'required|string|unique:employees,phone',
+            'phone'    => 'required|string|unique:employees,phone,' . $employeeId,
             'division' => 'required|uuid|exists:divisions,id',
             'position' => 'required|string',
         ];
