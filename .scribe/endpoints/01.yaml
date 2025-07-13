@@ -1,0 +1,86 @@
+name: 'Division management'
+description: |-
+
+  APIs for managing Division
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/divisions
+    metadata:
+      groupName: 'Division management'
+      groupDescription: |-
+
+        APIs for managing Division
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get All Divisions'
+      description: 'Retrieve a paginated list of divisions with optional name filtering.'
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      name:
+        name: name
+        description: 'Filter divisions by name (partial match).'
+        required: false
+        example: IT
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      name: IT
+    bodyParameters:
+      name:
+        name: name
+        description: ''
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      name: architecto
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": "success",
+            "message": "Divisions fetched successfully.",
+            "data": [
+               "divisions": [
+              {
+                "id": "uuid-here",
+                "name": "Information Technology"
+              },
+              {
+                "id": "uuid-here-2",
+                "name": "Human Resources"
+              }
+               ]
+            ],
+            "pagination": {
+              "current_page": 1,
+              "per_page": 5,
+              "total": 10
+            }
+          }
+        headers: []
+        description: 'Successful retrieval'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

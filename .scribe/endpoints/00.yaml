@@ -1,0 +1,141 @@
+name: 'Auth management'
+description: |-
+
+  APIs for managing authentication
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/login
+    metadata:
+      groupName: 'Auth management'
+      groupDescription: |-
+
+        APIs for managing authentication
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'User Login'
+      description: 'Authenticate user with username and password, returns access token on success.'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      username:
+        name: username
+        description: 'The username of the user.'
+        required: true
+        example: admin
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: 'The password of the user (minimum 8 characters).'
+        required: true
+        example: password123
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      username: admin
+      password: password123
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": "success",
+            "message": "Login successful.",
+            "data": {
+              "token": "1|abcdefg123456789",
+              "admin": {
+                "id": "uuid-here",
+                "name": "Administrator",
+                "username": "admin",
+                "phone": "081234567890",
+                "email": "admin@example.com"
+              }
+            }
+          }
+        headers: []
+        description: 'Successful login'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "success": "error",
+            "message": "Credidentals are wrong."
+          }
+        headers: []
+        description: 'Wrong credentials'
+        custom: []
+      -
+        status: 409
+        content: |-
+          {
+            "success": "error",
+            "message": "Already authenticated."
+          }
+        headers: []
+        description: 'Already authenticated'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/logout
+    metadata:
+      groupName: 'Auth management'
+      groupDescription: |-
+
+        APIs for managing authentication
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'User Logout'
+      description: 'Logout the authenticated user by revoking all tokens.'
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": "success",
+            "message": "Logout successful."
+          }
+        headers: []
+        description: 'Successful logout'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
