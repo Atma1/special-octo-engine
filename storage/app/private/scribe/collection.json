@@ -9,9 +9,9 @@
         }
     ],
     "info": {
-        "name": "Laravel API Documentation",
-        "_postman_id": "58fa6700-a499-466d-9e38-b990942ce057",
-        "description": "",
+        "name": "special_octo_engine API Documentation",
+        "_postman_id": "72580560-8547-48c9-903c-7c8206b90f71",
+        "description": "Documentation for BE Test 1 API",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
     "item": [
@@ -198,7 +198,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n  \"success\": \"success\",\n  \"message\": \"Divisions fetched successfully.\",\n  \"data\": {\n    \"employees\": [\n      {\n        \"id\": \"uuid-employee-id\",\n        \"image\": \"https:\/\/example.com\/image.jpg\",\n        \"name\": \"John Doe\",\n        \"phone\": \"081234567890\",\n        \"division\": {\n          \"id\": \"uuid-division-id\",\n          \"name\": \"Information Technology\"\n        },\n        \"position\": \"Software Developer\"\n      }\n    ]\n  },\n  \"pagination\": {\n    \"current_page\": 1,\n    \"per_page\": 5,\n    \"total\": 25\n  }\n}",
+                            "body": "{\n  \"success\": \"success\",\n  \"message\": \"Employee fetched successfully.\",\n  \"data\": {\n    \"employees\": [\n      {\n        \"id\": \"uuid-employee-id\",\n        \"image\": \"https:\/\/example.com\/image.jpg\",\n        \"name\": \"John Doe\",\n        \"phone\": \"081234567890\",\n        \"division\": {\n          \"id\": \"uuid-division-id\",\n          \"name\": \"Information Technology\"\n        },\n        \"position\": \"Software Developer\"\n      }\n    ]\n  },\n  \"pagination\": {\n    \"current_page\": 1,\n    \"per_page\": 5,\n    \"total\": 25\n  }\n}",
                             "name": "Successful retrieval"
                         },
                         {
@@ -373,6 +373,12 @@
         }
     ],
     "auth": {
-        "type": "noauth"
+        "type": "bearer",
+        "bearer": [
+            {
+                "key": "key",
+                "type": "string"
+            }
+        ]
     }
 }

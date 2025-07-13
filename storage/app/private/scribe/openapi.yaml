@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
-  title: 'Laravel API Documentation'
-  description: ''
+  title: 'special_octo_engine API Documentation'
+  description: 'Documentation for BE Test 1 API'
   version: 1.0.0
 servers:
   -
@@ -16,6 +16,15 @@ tags:
   -
     name: 'User management'
     description: "\nAPIs for managing users"
+components:
+  securitySchemes:
+    default:
+      type: http
+      scheme: bearer
+      description: 'You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.'
+security:
+  -
+    default: []
 paths:
   /api/login:
     post:
@@ -228,7 +237,7 @@ paths:
                 type: object
                 example:
                   success: success
-                  message: 'Divisions fetched successfully.'
+                  message: 'Employee fetched successfully.'
                   data:
                     employees:
                       -
@@ -250,7 +259,7 @@ paths:
                     example: success
                   message:
                     type: string
-                    example: 'Divisions fetched successfully.'
+                    example: 'Employee fetched successfully.'
                   data:
                     type: object
                     properties:

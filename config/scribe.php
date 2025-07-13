@@ -11,7 +11,7 @@ return [
     'title'                           => config('app.name') . ' API Documentation',
 
     // A short description of your API. Will be included in the docs webpage, Postman collection and OpenAPI spec.
-    'description'                     => 'Documentation for APP_NAME=special_octo_engine API',
+    'description'                     => 'Documentation for BE Test 1 API',
 
     // The base URL displayed in the docs.
     // If you're using `laravel` type, you can set this to a dynamic string, like '{{ config("app.tenant_url") }}' to get a dynamic base URL.
