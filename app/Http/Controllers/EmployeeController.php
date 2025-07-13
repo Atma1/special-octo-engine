@@ -147,7 +147,7 @@ class EmployeeController extends Controller
             'image'       => $request->image,
             'name'        => $request->name,
             'phone'       => $request->phone,
-            'division_id' => $request->division['id'],
+            'division_id' => $request->division,
             'position'    => $request->position,
         ]);
         return new SuccessResource('Employee updated successfully.');
