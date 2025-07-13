@@ -105,7 +105,7 @@ class EmployeeController extends Controller
             'division_id' => $request->division,
             'position'    => $request->position,
         ]);
-        return new SuccessResource('Employee created successfully.', null, null, 201);
+        return response(new SuccessResource('Employee created successfully.'), 201);
     }
 
     /**
@@ -150,7 +150,7 @@ class EmployeeController extends Controller
             'division_id' => $request->division,
             'position'    => $request->position,
         ]);
-        return new SuccessResource('Employee updated successfully.');
+        return response(new SuccessResource('Employee updated successfully.'));
     }
 
     /**
@@ -184,6 +184,6 @@ class EmployeeController extends Controller
             return new ErrorResource('Employee not found.', 404);
         }
         $employee->delete();
-        return new SuccessResource('Employee deleted successfully.');
+        return response(new SuccessResource('Employee deleted successfully.'));
     }
 }
