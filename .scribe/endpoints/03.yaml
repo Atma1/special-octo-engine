@@ -1,0 +1,468 @@
+name: 'User management'
+description: |-
+
+  APIs for managing users
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/employee
+    metadata:
+      groupName: 'User management'
+      groupDescription: |-
+
+        APIs for managing users
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get All Employees'
+      description: 'Retrieve a paginated list of employees with optional filtering by name and division.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      name:
+        name: name
+        description: 'Filter employees by name (partial match).'
+        required: false
+        example: John
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      division_id:
+        name: division_id
+        description: 'Filter employees by division ID.'
+        required: false
+        example: uuid-division-id
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      name: John
+      division_id: uuid-division-id
+    bodyParameters:
+      name:
+        name: name
+        description: ''
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      division_id:
+        name: division_id
+        description: 'Must be a valid UUID.'
+        required: false
+        example: a4855dc5-0acb-33c3-b921-f4291f719ca0
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      name: architecto
+      division_id: a4855dc5-0acb-33c3-b921-f4291f719ca0
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "status": "success",
+            "message": "Employee fetched successfully.",
+            "data": {
+              "employees": [
+                {
+                  "id": "uuid-employee-id",
+                  "image": "https://example.com/image.jpg",
+                  "name": "John Doe",
+                  "phone": "081234567890",
+                  "division": {
+                    "id": "uuid-division-id",
+                    "name": "Information Technology"
+                  },
+                  "position": "Software Developer"
+                }
+              ]
+            },
+            "pagination": {
+              "current_page": 1,
+              "per_page": 5,
+              "total": 25
+            }
+          }
+        headers: []
+        description: 'Successful retrieval'
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "message": "The following field is required. (and n more errors)"
+            "error":  errorArray
+          }
+        headers: []
+        description: 'Invalid request body'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/employee
+    metadata:
+      groupName: 'User management'
+      groupDescription: |-
+
+        APIs for managing users
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Create New Employee'
+      description: 'Create a new employee record with the provided information.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      image:
+        name: image
+        description: "URL of the employee's profile image."
+        required: true
+        example: 'https://example.com/image.jpg'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      name:
+        name: name
+        description: 'Full name of the employee.'
+        required: true
+        example: 'John Doe'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      phone:
+        name: phone
+        description: 'Phone number of the employee.'
+        required: true
+        example: '081234567890'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      division:
+        name: division
+        description: 'UUID of the division.'
+        required: true
+        example: uuid-division-id
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      position:
+        name: position
+        description: 'Job position of the employee.'
+        required: true
+        example: 'Software Developer'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      image: 'https://example.com/image.jpg'
+      name: 'John Doe'
+      phone: '081234567890'
+      division: uuid-division-id
+      position: 'Software Developer'
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+            "status": "success",
+            "message": "Employee created successfully."
+          }
+        headers: []
+        description: 'Employee created successfully'
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "message": "The following field is required. (and 4 more errors)"
+            "error":  errorArray
+          }
+        headers: []
+        description: 'Invalid request body'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/employee/{id}'
+    metadata:
+      groupName: 'User management'
+      groupDescription: |-
+
+        APIs for managing users
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update Employee'
+      description: "Update an existing employee's information by UUID."
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the employee.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      uuid:
+        name: uuid
+        description: 'The UUID of the employee to update.'
+        required: true
+        example: uuid-employee-id
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: architecto
+      uuid: uuid-employee-id
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      image:
+        name: image
+        description: "URL of the employee's profile image."
+        required: true
+        example: 'https://example.com/updated-image.jpg'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      name:
+        name: name
+        description: 'Full name of the employee.'
+        required: true
+        example: 'Jane Doe'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      phone:
+        name: phone
+        description: 'Phone number of the employee.'
+        required: true
+        example: '081234567891'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      division:
+        name: division
+        description: 'UUID of the division.'
+        required: true
+        example: uuid-division-id
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      position:
+        name: position
+        description: 'Job position of the employee.'
+        required: true
+        example: 'Senior Developer'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      image: 'https://example.com/updated-image.jpg'
+      name: 'Jane Doe'
+      phone: '081234567891'
+      division: uuid-division-id
+      position: 'Senior Developer'
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "status":: "success",
+            "message": "Employee updated successfully."
+          }
+        headers: []
+        description: 'Employee updated successfully'
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "status":: "error",
+            "message": "Employee not found."
+          }
+        headers: []
+        description: 'Employee not found'
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "message": "The following field is required. (and 4 more errors)"
+            "error":  errorArray
+          }
+        headers: []
+        description: 'Invalid request body'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/employee/{id}'
+    metadata:
+      groupName: 'User management'
+      groupDescription: |-
+
+        APIs for managing users
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Delete Employee'
+      description: 'Delete an employee record by UUID.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the employee.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      uuid:
+        name: uuid
+        description: 'The UUID of the employee to delete.'
+        required: true
+        example: uuid-employee-id
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: architecto
+      uuid: uuid-employee-id
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "status": "success",
+            "message": "Employee deleted successfully."
+          }
+        headers: []
+        description: 'Employee deleted successfully'
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "status": "error",
+            "message": "Employee not found."
+          }
+        headers: []
+        description: 'Employee not found'
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "message": "The image field is required. (and 4 more errors)"
+            "error":  errorArray
+          }
+        headers: []
+        description: 'Invalid request body'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []

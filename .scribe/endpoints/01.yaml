@@ -1,89 +1,150 @@
-name: 'Division management'
-description: |-
-
-  APIs for managing Division
+name: Nilai
+description: ''
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/divisions
+    uri: api/nilaiRT
     metadata:
-      groupName: 'Division management'
-      groupDescription: |-
-
-        APIs for managing Division
+      groupName: Nilai
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Get All Divisions'
-      description: 'Retrieve a paginated list of divisions with optional name filtering.'
-      authenticated: true
+      title: 'Get Nilai RT'
+      description: ''
+      authenticated: false
       custom: []
     headers:
-      Authorization: 'Bearer {YOUR_AUTH_KEY}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
     cleanUrlParameters: []
-    queryParameters:
-      name:
-        name: name
-        description: 'Filter divisions by name (partial match).'
-        required: false
-        example: IT
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanQueryParameters:
-      name: IT
-    bodyParameters:
-      name:
-        name: name
-        description: ''
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-    cleanBodyParameters:
-      name: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
     fileParameters: []
     responses:
       -
         status: 200
-        content: |-
-          {
-            "status": "success",
-            "message": "Divisions fetched successfully.",
-            "data": [
-               "divisions": [
-              {
-                "id": "uuid-here",
-                "name": "Information Technology"
-              },
-              {
-                "id": "uuid-here-2",
-                "name": "Human Resources"
-              }
-               ]
-            ],
-            "pagination": {
-              "current_page": 1,
-              "per_page": 5,
-              "total": 10
-            }
-          }
-        headers: []
-        description: 'Successful retrieval'
+        content: '[{"nama":"Ahmad Fadlan","nilaiRT":{"REALISTIC":"4","INVESTIGATIVE":"2","ARTISTIC":"2","SOCIAL":"2","ENTERPRISING":"4","CONVENTIONAL":"2"},"nisn":"3097012709"},{"nama":"Alpianor","nilaiRT":{"REALISTIC":"5","INVESTIGATIVE":"4","ARTISTIC":"4","SOCIAL":"9","ENTERPRISING":"2","CONVENTIONAL":"4"},"nisn":"3088979054"},{"nama":"Aspianor","nilaiRT":{"REALISTIC":"7","INVESTIGATIVE":"4","ARTISTIC":"4","SOCIAL":"7","ENTERPRISING":"4","CONVENTIONAL":"4"},"nisn":"0084867232"},{"nama":"Delly Marselina","nilaiRT":{"REALISTIC":"8","INVESTIGATIVE":"6","ARTISTIC":"5","SOCIAL":"9","ENTERPRISING":"4","CONVENTIONAL":"8"},"nisn":"0087420239"},{"nama":"Fiola","nilaiRT":{"REALISTIC":"5","INVESTIGATIVE":"1","ARTISTIC":"2","SOCIAL":"7","ENTERPRISING":"4","CONVENTIONAL":"3"},"nisn":"00825052525"},{"nama":"Lestari","nilaiRT":{"REALISTIC":"7","INVESTIGATIVE":"4","ARTISTIC":"4","SOCIAL":"9","ENTERPRISING":"2","CONVENTIONAL":"8"},"nisn":"3097259402"},{"nama":"Luna Maya","nilaiRT":{"REALISTIC":"3","INVESTIGATIVE":"4","ARTISTIC":"6","SOCIAL":"8","ENTERPRISING":"3","CONVENTIONAL":"4"},"nisn":"0075745967"},{"nama":"M.Arifin Ilham","nilaiRT":{"REALISTIC":"8","INVESTIGATIVE":"10","ARTISTIC":"6","SOCIAL":"11","ENTERPRISING":"6","CONVENTIONAL":"10"},"nisn":"0059052491"},{"nama":"M.Panki Erisman","nilaiRT":{"REALISTIC":"6","INVESTIGATIVE":"4","ARTISTIC":"2","SOCIAL":"6","ENTERPRISING":"3","CONVENTIONAL":"6"},"nisn":"0084112788"},{"nama":"Muhamad Rengki","nilaiRT":{"REALISTIC":"5","INVESTIGATIVE":"1","ARTISTIC":"6","SOCIAL":"4","ENTERPRISING":"6","CONVENTIONAL":"4"},"nisn":"0085305124"},{"nama":"Muhammad Rizal Fatoni","nilaiRT":{"REALISTIC":"3","INVESTIGATIVE":"5","ARTISTIC":"2","SOCIAL":"10","ENTERPRISING":"2","CONVENTIONAL":"6"},"nisn":"0078019829"},{"nama":"Muhammad Sanusi","nilaiRT":{"REALISTIC":"4","INVESTIGATIVE":"6","ARTISTIC":"2","SOCIAL":"10","ENTERPRISING":"6","CONVENTIONAL":"7"},"nisn":"0094494403"},{"nama":"Noni","nilaiRT":{"REALISTIC":"8","INVESTIGATIVE":"7","ARTISTIC":"6","SOCIAL":"8","ENTERPRISING":"8","CONVENTIONAL":"6"},"nisn":"0085692202"},{"nama":"Nor Fitriyani","nilaiRT":{"REALISTIC":"4","INVESTIGATIVE":"9","ARTISTIC":"5","SOCIAL":"9","ENTERPRISING":"6","CONVENTIONAL":"9"},"nisn":"0081726779"},{"nama":"Noraini","nilaiRT":{"REALISTIC":"4","INVESTIGATIVE":"3","ARTISTIC":"5","SOCIAL":"7","ENTERPRISING":"1","CONVENTIONAL":"5"},"nisn":"3083779436"},{"nama":"Norman","nilaiRT":{"REALISTIC":"4","INVESTIGATIVE":"4","ARTISTIC":"3","SOCIAL":"7","ENTERPRISING":"4","CONVENTIONAL":"8"},"nisn":"0073754988"},{"nama":"Nuraini A","nilaiRT":{"REALISTIC":"3","INVESTIGATIVE":"5","ARTISTIC":"4","SOCIAL":"8","ENTERPRISING":"3","CONVENTIONAL":"7"},"nisn":"3071512187"},{"nama":"Putri Faza Najwa","nilaiRT":{"REALISTIC":"4","INVESTIGATIVE":"9","ARTISTIC":"5","SOCIAL":"6","ENTERPRISING":"9","CONVENTIONAL":"8"},"nisn":"3084548483"},{"nama":"Roynaldo C.W","nilaiRT":{"REALISTIC":"5","INVESTIGATIVE":"8","ARTISTIC":"2","SOCIAL":"9","ENTERPRISING":"5","CONVENTIONAL":"5"},"nisn":"0089988234"},{"nama":"Saddam Sugianto","nilaiRT":{"REALISTIC":"7","INVESTIGATIVE":"9","ARTISTIC":"8","SOCIAL":"7","ENTERPRISING":"8","CONVENTIONAL":"8"},"nisn":"0053213163"},{"nama":"Selia","nilaiRT":{"REALISTIC":"6","INVESTIGATIVE":"3","ARTISTIC":"2","SOCIAL":"9","ENTERPRISING":"2","CONVENTIONAL":"6"},"nisn":"0062838429"},{"nama":"Siti Aisah","nilaiRT":{"REALISTIC":"5","INVESTIGATIVE":"2","ARTISTIC":"4","SOCIAL":"8","ENTERPRISING":"5","CONVENTIONAL":"5"},"nisn":"0084759546"},{"nama":"Siti Hadizah","nilaiRT":{"REALISTIC":"6","INVESTIGATIVE":"6","ARTISTIC":"9","SOCIAL":"8","ENTERPRISING":"4","CONVENTIONAL":"8"},"nisn":"0052418071"}]'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
         custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    responseFields:
+      nama:
+        name: nama
+        description: "The student's name"
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      nilaiRT:
+        name: nilaiRT
+        description: 'The subject and score mapping'
+        required: false
+        example: null
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      nisn:
+        name: nisn
+        description: "The student's NISN"
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/nilaiST
+    metadata:
+      groupName: Nilai
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get Nilai ST'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '[{"listNilai":{"Verbal":"208.35","Kuantitatif":"89.01","Penalaran":"200.00","Figural":"142.86"},"nama":"Muhammad Sanusi","nisn":"0094494403","total":640.22},{"listNilai":{"Verbal":"166.68","Kuantitatif":"59.34","Penalaran":"200.00","Figural":"190.48"},"nama":"Aspianor","nisn":"0084867232","total":616.5},{"listNilai":{"Verbal":"166.68","Kuantitatif":"118.68","Penalaran":"100.00","Figural":"190.48"},"nama":"Delly Marselina","nisn":"0087420239","total":575.84},{"listNilai":{"Verbal":"83.34","Kuantitatif":"148.35","Penalaran":"200.00","Figural":"142.86"},"nama":"Lestari","nisn":"3097259402","total":574.55},{"listNilai":{"Verbal":"166.68","Kuantitatif":"59.34","Penalaran":"200.00","Figural":"119.05"},"nama":"Nor Fitriyani","nisn":"0081726779","total":545.07},{"listNilai":{"Verbal":"166.68","Kuantitatif":"118.68","Penalaran":"100.00","Figural":"142.86"},"nama":"Saddam Sugianto","nisn":"0053213163","total":528.22},{"listNilai":{"Verbal":"208.35","Kuantitatif":"148.35","Penalaran":"0.00","Figural":"166.67"},"nama":"Nuraini A","nisn":"3071512187","total":523.37},{"listNilai":{"Verbal":"166.68","Kuantitatif":"89.01","Penalaran":"100.00","Figural":"166.67"},"nama":"Siti Hadizah","nisn":"0052418071","total":522.36},{"listNilai":{"Verbal":"208.35","Kuantitatif":"29.67","Penalaran":"100.00","Figural":"142.86"},"nama":"Ahmad Fadlan","nisn":"3097012709","total":480.88},{"listNilai":{"Verbal":"125.01","Kuantitatif":"89.01","Penalaran":"200.00","Figural":"47.62"},"nama":"Muhammad Rizal Fatoni","nisn":"0078019829","total":461.64},{"listNilai":{"Verbal":"83.34","Kuantitatif":"118.68","Penalaran":"100.00","Figural":"142.86"},"nama":"Noraini","nisn":"3083779436","total":444.88},{"listNilai":{"Verbal":"41.67","Kuantitatif":"29.67","Penalaran":"200.00","Figural":"142.86"},"nama":"Norman","nisn":"0073754988","total":414.2},{"listNilai":{"Verbal":"41.67","Kuantitatif":"148.35","Penalaran":"100.00","Figural":"119.05"},"nama":"Selia","nisn":"0062838429","total":409.07},{"listNilai":{"Verbal":"166.68","Kuantitatif":"59.34","Penalaran":"0.00","Figural":"166.67"},"nama":"Luna Maya","nisn":"0075745967","total":392.69},{"listNilai":{"Verbal":"166.68","Kuantitatif":"59.34","Penalaran":"0.00","Figural":"166.67"},"nama":"Siti Aisah","nisn":"0084759546","total":392.69},{"listNilai":{"Verbal":"83.34","Kuantitatif":"59.34","Penalaran":"0.00","Figural":"214.29"},"nama":"Roynaldo C.W","nisn":"0089988234","total":356.97},{"listNilai":{"Verbal":"125.01","Kuantitatif":"59.34","Penalaran":"0.00","Figural":"166.67"},"nama":"M.Arifin Ilham","nisn":"0059052491","total":351.02},{"listNilai":{"Verbal":"0.00","Kuantitatif":"59.34","Penalaran":"200.00","Figural":"71.43"},"nama":"Noni","nisn":"0085692202","total":330.77},{"listNilai":{"Verbal":"83.34","Kuantitatif":"118.68","Penalaran":"0.00","Figural":"119.05"},"nama":"M.Panki Erisman","nisn":"0084112788","total":321.07},{"listNilai":{"Verbal":"83.34","Kuantitatif":"59.34","Penalaran":"100.00","Figural":"71.43"},"nama":"Muhamad Rengki","nisn":"0085305124","total":314.11},{"listNilai":{"Verbal":"83.34","Kuantitatif":"89.01","Penalaran":"0.00","Figural":"119.05"},"nama":"Alpianor","nisn":"3088979054","total":291.4},{"listNilai":{"Verbal":"83.34","Kuantitatif":"59.34","Penalaran":"0.00","Figural":"119.05"},"nama":"Fiola","nisn":"00825052525","total":261.73},{"listNilai":{"Verbal":"125.01","Kuantitatif":"59.34","Penalaran":"0.00","Figural":"71.43"},"nama":"Putri Faza Najwa","nisn":"3084548483","total":255.78}]'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields:
+      listNilai:
+        name: listNilai
+        description: 'The subject and multiplied score mapping'
+        required: false
+        example: null
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      nama:
+        name: nama
+        description: "The student's name"
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      nisn:
+        name: nisn
+        description: "The student's NISN"
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      total:
+        name: total
+        description: 'The total score (rounded)'
+        required: false
+        example: null
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    auth: []
     controller: null
     method: null
     route: null

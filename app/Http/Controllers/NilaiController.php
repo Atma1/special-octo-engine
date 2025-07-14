@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 class NilaiController extends Controller
 {
     /**
-     * Get Nilai RT grouped by nama.
+     * Get Nilai RT
      *
      * @group Nilai
      * @responseField nama string The student's name
@@ -45,7 +45,7 @@ class NilaiController extends Controller
     }
 
     /**
-     * Get Nilai ST grouped by nama, with multiplied scores and sorted by total.
+     * Get Nilai ST
      *
      * @group Nilai
      * @responseField listNilai object The subject and multiplied score mapping
