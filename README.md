@@ -1,6 +1,6 @@
 # API Backend
 
-This is a Laravel API backend project implementing employee management system with authentication.
+This is a Laravel API backend project implementing employee management system with authentication and nilai getting.
 
 ### ✅ Prerequisites
 
@@ -12,6 +12,7 @@ This is a Laravel API backend project implementing employee management system wi
 - **Authentication**: Login/Logout with token-based authentication
 - **Division Management**: Get all divisions with search functionality
 - **Employee Management**: CRUD operations for employees
+- **Nilai Getter**: Get nilai RT and ST
 - **API Documentation**: RESTful API documentation using scribe and scala
 
 ## 📄 API Documentation
